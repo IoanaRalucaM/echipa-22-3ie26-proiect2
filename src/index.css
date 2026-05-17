@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Lato", sans-serif;
+  --font-accent: "Dancing Script", cursive;
+
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #ffedd5;
+  --color-primary-200: #fed7aa;
+  --color-primary-400: #fb923c;
+  --color-primary-500: #f97316;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-900: #7c2d12;
+
+  --color-sand-50: #fdf8f0;
+  --color-sand-100: #f5e6d0;
+  --color-sand-200: #e8ccaa;
+  --color-sand-400: #c9956a;
+  --color-sand-600: #a0714a;
+  --color-sand-800: #6b4a2e;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    @apply bg-sand-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-bold px-6 py-3 rounded-full transition-all duration-200 hover:scale-105;
+  }
+  .btn-outline {
+    @apply border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-bold px-6 py-3 rounded-full transition-all duration-200;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2;
+  }
+  .section-subtitle {
+    @apply text-gray-500 dark:text-gray-400 text-lg mb-10;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
