@@ -6,10 +6,10 @@
 
 | Resursa | URL |
 |---|---|
-| 🌐 Site live (Netlify) | `https://wanderlust-echipa00.netlify.app` |
-| 🗄️ Strapi CMS | `https://wanderlust.strapiapp.com` |
-| 📁 GitHub Repository | `https://github.com/echipa-00-3ie26-proiect2` |
-| 🎨 Temă tweakcn | `https://tweakcn.com/editor/theme?theme=...` |
+| 🌐 Site live (Netlify) | https://stellar-hotteok-8b7e53.netlify.app |
+| 🗄️ Strapi CMS | https://stunning-talent-67322a5e5f.strapiapp.com |
+| 📁 GitHub Repository | https://github.com/IoanaRalucaM/echipa-22-3ie26-proiect2 |
+| 🎨 Temă tweakcn | https://tweakcn.com/editor/theme?theme=candyland |
 
 ---
 
