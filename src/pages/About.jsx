@@ -10,6 +10,7 @@ export default function About() {
     fetch(`${STRAPI_URL}/api/about`)
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         setAbout(data.data)
         setLoading(false)
       })
@@ -18,7 +19,6 @@ export default function About() {
         setLoading(false)
       })
   }, [])
-
   return (
     <div className="animate-fade-in">
       <section className="relative h-64 md:h-80 overflow-hidden flex items-center justify-center">
