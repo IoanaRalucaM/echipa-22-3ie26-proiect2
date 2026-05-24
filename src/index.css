@@ -1,26 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600;700&display=swap');
 @import "tailwindcss";
 
-@theme {
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.9809 0.0025 228.7836);
+  --foreground: oklch(0.3211 0 0);
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.3211 0 0);
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.3211 0 0);
+  --primary: oklch(0.8677 0.0735 7.0855);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.8148 0.0819 225.7537);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.8828 0.0285 98.1033);
+  --muted-foreground: oklch(0.5382 0 0);
+  --accent: oklch(0.9680 0.2110 109.7692);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.8699 0 0);
+  --input: oklch(0.8699 0 0);
+  --ring: oklch(0.8677 0.0735 7.0855);
+  --font-sans: Poppins, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: Roboto Mono, monospace;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.2303 0.0125 264.2926);
+  --foreground: oklch(0.9219 0 0);
+  --card: oklch(0.3210 0.0078 223.6661);
+  --card-foreground: oklch(0.9219 0 0);
+  --popover: oklch(0.3210 0.0078 223.6661);
+  --popover-foreground: oklch(0.9219 0 0);
+  --primary: oklch(0.8027 0.1355 349.2347);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.7395 0.2268 142.8504);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.3867 0 0);
+  --muted-foreground: oklch(0.7155 0 0);
+  --accent: oklch(0.8148 0.0819 225.7537);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.3867 0 0);
+  --input: oklch(0.3867 0 0);
+  --ring: oklch(0.8027 0.1355 349.2347);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
   --font-heading: "Playfair Display", serif;
   --font-body: "Lato", sans-serif;
   --font-accent: "Dancing Script", cursive;
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 
-  --color-primary-50: #fff7ed;
-  --color-primary-100: #ffedd5;
-  --color-primary-200: #fed7aa;
-  --color-primary-400: #fb923c;
-  --color-primary-500: #f97316;
-  --color-primary-600: #ea580c;
-  --color-primary-700: #c2410c;
-  --color-primary-900: #7c2d12;
-
-  --color-sand-50: #fdf8f0;
-  --color-sand-100: #f5e6d0;
-  --color-sand-200: #e8ccaa;
-  --color-sand-400: #c9956a;
-  --color-sand-600: #a0714a;
-  --color-sand-800: #6b4a2e;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @keyframes fadeIn {
@@ -34,9 +93,12 @@
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
   body {
+    @apply bg-background text-foreground transition-colors duration-300;
     font-family: var(--font-body);
-    @apply bg-sand-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300;
   }
   h1, h2, h3 {
     font-family: var(--font-heading);
@@ -45,19 +107,20 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-500 hover:bg-primary-600 text-white font-bold px-6 py-3 rounded-full transition-all duration-200 hover:scale-105;
+    @apply bg-primary hover:bg-primary/80 text-primary-foreground font-bold px-6 py-3 rounded-full transition-all duration-200 hover:scale-105;
   }
   .btn-outline {
-    @apply border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white font-bold px-6 py-3 rounded-full transition-all duration-200;
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold px-6 py-3 rounded-full transition-all duration-200;
   }
   .card {
-    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+    @apply bg-card text-card-foreground rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2;
+    @apply text-3xl md:text-4xl font-bold text-foreground mb-2;
+    font-family: var(--font-heading);
   }
   .section-subtitle {
-    @apply text-gray-500 dark:text-gray-400 text-lg mb-10;
+    @apply text-muted-foreground text-lg mb-10;
   }
 }
 
