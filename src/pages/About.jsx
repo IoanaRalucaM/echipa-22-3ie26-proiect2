@@ -48,10 +48,10 @@ export default function About() {
                   {about?.title || 'Cine suntem noi?'}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  {about?.description || 'Suntem o echipă de 4 studente pasionate de călătorii, cultură și aventură.'}
+                  {typeof about?.description === 'string' ? about.description : 'Suntem o echipă de 4 studente pasionate de călătorii, cultură și aventură.'}
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  {about?.mission || 'Misiunea noastră este să inspirăm oamenii să exploreze lumea.'}
+                  {typeof about?.mission === 'string' ? about.mission : 'Misiunea noastră este să inspirăm oamenii să exploreze lumea.'}
                 </p>
               </div>
               <div className="rounded-2xl overflow-hidden shadow-xl">
