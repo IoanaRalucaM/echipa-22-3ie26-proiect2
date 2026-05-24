@@ -1,7 +1,6 @@
-jsx
 import { useState, useEffect } from 'react'
 
-const STRAPI_URL = 'http://localhost:1337'
+const STRAPI_URL = 'https://stunning-talent-67322a5e5f.strapiapp.com'
 
 export default function About() {
   const [about, setAbout] = useState(null)
